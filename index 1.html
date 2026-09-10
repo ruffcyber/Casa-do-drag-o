@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">]
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Casa de Quem</title>
+</head>
+<body>
+    <header>
+        <h1>Casa de Quem</h1>
+        <h2>Comida para quem está chegando e quer se sentir em casa!</h2>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Nossa história</a></li>
+                <li><a href="#reservas">Reservas</a></li>
+                <li><a href="#cardapio">Cardápio</a></li>
+                <li><a href="#franquias">Franquia</a></li>
+                <li><a href="#contato">Contato</a></li>
+                <button class="btn-reservas"><a href="#reservas">Faça sua reserva</a></button>           
+            </ul>
+
+        </nav>
+    </header>
+    
+    <main>
+        <section class=" inicio" id="inicio">
+            <p>Franquia de restaurantes caseiros</p>
+            <h1>A mesa de todo mundo é aqui.</h1>
+            <p> Na Casa de Quem, cada prato é preparado com carinho e amor, como estivesse com sua família. Comida caseira de verdade, em um lugar onde todos se sentem em casa. </p>
+           
+            <button class="btn-reservas"><a href="#reservas">Faça sua reserva</a></button>
+            <button class="btn-cardapio"><a href="#cardapio">Confira nosso cardápio</a></button>
+        </section>
+
+        <section class="sobre" id="sobre">
+            <h1>Conheça nossa história</h1>
+            <p> Nasceu em uma cozinha pequena. Cresceu com amor </p>
+            
+            
+        </section>
+
+        <section class="reservas" id="reservas">
+            <h1>Faça sua reserva</h1>
+            <p>Para garantir sua mesa, preencha o formulário abaixo com seus dados e aguarde nossa confirmação.</p>
+            <form id="reserva-form">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone" required>
+
+                <label for="data">Data da reserva:</label>
+                <input type="date" id="data" name="data" required>
+
+                <label for="hora">Hora da reserva:</label>
+                <input type="time" id="hora" name="hora" required>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+        <section class="cardapio" id="cardapio">
+            <h1>Nosso cardápio</h1>
+            <p>Confira alguns dos pratos que oferecemos em nosso restaurante:</p>
+            <div class="pratos">
+                <div class="prato">
+                    <img src="img/arroz_feijao.jpg" alt="Arroz e Feijão">
+                    <h2>Arroz e Feijão</h2>
+                    <p>O clássico da comida brasileira, feito com ingredientes frescos e de qualidade.</p>
+                </div>
+                <div class="prato">
+                    <img src="img/frango_assado.jpg" alt="Frango Assado">
+                    <h2>Frango Assado</h2>
+                    <p>Frango temperado e assado no ponto certo, acompanhado de legumes frescos.</p>
+                </div>
+                <div class="prato">
+                    <img src="img/bolo_caseiro.jpg" alt="Bolo Caseiro">
+                    <h2>Bolo Caseiro</h2>
+                    <p>Delicioso bolo feito com receitas tradicionais, perfeito para sobremesa.</p>
+                </div>
+
+    </main>
+    
+</body>
+</html>
