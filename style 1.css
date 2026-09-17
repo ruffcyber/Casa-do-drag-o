@@ -13,14 +13,14 @@ body {
     padding: 20px;
     border: 1px solid #ccc;
 }
-header{
+header {
     background-color: #59140D;
     color: #fbf6f6;
     padding: 10px;
     text-align: center;
 }
 
-nav {
+.container-header-conteudo {
     display: flex;
     align-items: center; 
     background-color: #59140D; 
@@ -49,19 +49,19 @@ nav {
     font-size: 22px;
 }
 
-nav ul {
+nav {
     display: flex;
     align-items: center; 
     gap: 20px; 
     list-style: none;
 }
 
-nav ul li  {
+nav {
     display: inline-block;
     margin: 0 10px;
 }
 
-nav ul li a {
+nav a {
     color: #fbf6f6;
     text-decoration: none;
 }
@@ -72,6 +72,7 @@ main section {
     background-color: #fcfcfc;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+    
 
 .inicio {
     text-align: left;

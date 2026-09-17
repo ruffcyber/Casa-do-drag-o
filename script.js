@@ -1,30 +1,455 @@
-
 //aqui as unidades desse treco, se quisrem mais só replicar o bloco e ver cidades próximas//
 const unidades = [
 {
 id: 1,
-nome: "Araçatuba - Centro",
-capacidade: 24
+nome: "Centro",
+cidade: "Araçatuba",
+bairro: "Centro",
+capacidade: 24,
+ocupacaoAtual: 18,
+imagem: "",
+descricao: "Nossa casa no centro da cidade.",
 },
 
 {
 id: 2,
 nome: "Araçatuba - Shopping",
-capacidade: 20
+cidade: "Araçatuba",
+bairro: "Casa Nova",
+capacidade: 20,
+ocupacaoAtual: 20,
+imagem: "",
+descricao: "Uma experiência diferenciada dentro do shoppping.",
 },
 
 {
 id: 3,
 nome: "Birigui",
-capacidade: 18
+cidade: "Birigui",
+bairro: "Centro",
+capacidade: 18,
+ocupacaoAtual: 10,
+imagem: "",
+descricao: "Nossa casa em Birigui.",
 },
 
-{
-id: 4,
-nome: "São José do Rio Preto",
-capacidade: 22
-}
 ];
+
+const cardapios = [
+
+    {
+        id: 1,
+        unidadeId: 1,
+        categoria: "Clássicos",
+        nome: "Experiência Casa",
+        descricao: "Uma experiência clássica com pratos tradicionais.",
+        preco: 89.90,
+        capacidade: 20,
+        reservasAtual: 8
+    },
+
+    {
+        id: 2,
+        unidadeId: 1,
+        categoria: "Veganos",
+        nome: "Experiência Jardim",
+        descricao: "Uma experiência vegana com pratos frescos e saborosos.",
+        preco: 79.90,
+        capacidade: 15,
+        reservasAtual: 15
+    },
+
+    {
+        id: 3,
+        unidadeId: 1,
+        categoria: "Especial",
+        nome: "Experiência Chef",
+        descricao: "Uma experiência especial com pratos exclusivos do chef.",
+        preco: 119.90,
+        capacidade: 10,
+        reservasAtual: 4
+    },
+
+
+    {
+        id: 4,
+        unidadeId: 2,
+        categoria: "Clássicos",
+        nome: "Força",
+        descricao: "Uma experiência clássica com pratos tradicionais.",
+        preco: 94.90,
+        capacidade: 30,
+        reservasAtual: 12
+    },
+
+    {
+        id: 5,
+        unidadeId: 2,
+        categoria: "Veganos",
+        nome: "Experiência Verde",
+        descricao: "Uma experiência vegana com pratos frescos e saborosos.",
+        preco: 84.90,
+        capacidade: 20,
+        reservasAtual: 5
+    },
+
+    {
+        id: 6,
+        unidadeId: 3,
+        categoria: "Especial",
+        nome: "Experiência Noturna",
+        descricao: "Uma experiência especial com pratos exclusivos do chef.",
+        preco: 129.90,
+        capacidade: 15,
+        reservasAtual: 15
+    },
+];
+
+// ==========================================
+// VARIÁVEIS
+// ==========================================
+
+let unidadeSelecionada = null;
+let categoriaSelecionada = "Todas";
+
+
+// ==========================================
+// INICIALIZAÇÃO
+// ==========================================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    // Mostra as unidades
+    if (document.getElementById("listaUnidades")) {
+        renderizarUnidades();
+    }
+
+    // Se existir campo de busca
+    const buscaUnidade = document.getElementById("buscaUnidade");
+
+    if (buscaUnidade) {
+        buscaUnidade.addEventListener("input", renderizarUnidades);
+    }
+
+});
+
+
+// ==========================================
+// MOSTRAR UNIDADES
+// ==========================================
+
+function renderizarUnidades() {
+
+    const lista = document.getElementById("listaUnidades");
+
+    if (!lista) return;
+
+    const busca = document
+        .getElementById("buscaUnidade")
+        ?.value
+        .toLowerCase()
+        .trim() || "";
+
+    // Filtra por nome, cidade ou bairro
+    const unidadesFiltradas = unidades.filter(function (unidade) {
+
+        return (
+            unidade.nome.toLowerCase().includes(busca) ||
+            unidade.cidade.toLowerCase().includes(busca) ||
+            unidade.bairro.toLowerCase().includes(busca)
+        );
+
+    });
+
+    // Limpa a lista
+    lista.innerHTML = "";
+
+    // Nenhuma unidade encontrada
+    if (unidadesFiltradas.length === 0) {
+
+        lista.innerHTML = `
+            <p class="mensagem-vazia">
+                Nenhuma unidade encontrada.
+            </p>
+        `;
+
+        return;
+    }
+
+    // Cria os cards
+    unidadesFiltradas.forEach(function (unidade) {
+
+        const ocupacao = unidade.ocupacaoAtual / unidade.capacidade * 100;
+
+        let status = "";
+        let classeStatus = "";
+
+        if (ocupacao >= 100) {
+
+            status = "Lotado";
+            classeStatus = "lotado";
+
+        } else if (ocupacao >= 80) {
+
+            status = "Alta procura";
+            classeStatus = "alta-procura";
+
+        } else {
+
+            status = "Disponível";
+            classeStatus = "disponivel";
+        }
+
+
+        lista.innerHTML += `
+
+            <div class="card-unidade">
+
+                <div class="card-unidade-conteudo">
+
+                    <span class="status ${classeStatus}">
+                        ${status}
+                    </span>
+
+                    <h3>
+                        ${unidade.nome}
+                    </h3>
+
+                    <p>
+                        ${unidade.descricao}
+                    </p>
+
+                    <p>
+                        📍 ${unidade.bairro} — ${unidade.cidade}
+                    </p>
+
+                    <p>
+                        👥 Capacidade: ${unidade.capacidade} pessoas
+                    </p>
+
+                    <button
+                        type="button"
+                        onclick="selecionarUnidade(${unidade.id})">
+
+                        Ver cardápio
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+    });
+}
+
+
+// ==========================================
+// SELECIONAR UNIDADE
+// ==========================================
+
+function selecionarUnidade(id) {
+
+    unidadeSelecionada = unidades.find(function (unidade) {
+
+        return unidade.id === id;
+
+    });
+
+    if (!unidadeSelecionada) return;
+
+    // Volta para "Todas" sempre que uma unidade é escolhida
+    categoriaSelecionada = "Todas";
+
+    // Mostra o nome da unidade no título
+    const titulo = document.getElementById("nomeUnidadeCardapio");
+
+    if (titulo) {
+
+        titulo.textContent =
+            "Cardápio — " + unidadeSelecionada.nome;
+
+    }
+
+    // Mostra mensagem da unidade
+    const mensagem = document.getElementById("mensagemCardapio");
+
+    if (mensagem) {
+
+        mensagem.textContent =
+            "Você escolheu a unidade " +
+            unidadeSelecionada.nome +
+            ". Agora é hora de descobrir a experiência.";
+
+    }
+
+    // Mostra categorias
+    renderizarCategorias();
+
+    // Mostra cardápio
+    renderizarCardapio();
+
+    // Leva o usuário até o cardápio
+    const cardapio = document.getElementById("cardapio");
+
+    if (cardapio) {
+
+        cardapio.scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }
+
+}
+
+
+// ==========================================
+// CATEGORIAS DO CARDÁPIO
+// ==========================================
+
+function renderizarCategorias() {
+
+    const container =
+        document.getElementById("categoriasCardapio");
+
+    if (!container || !unidadeSelecionada) return;
+
+    // Busca apenas os cardápios da unidade escolhida
+    const cardapiosDaUnidade = cardapios.filter(function (item) {
+
+        return item.unidadeId === unidadeSelecionada.id;
+
+    });
+
+    // Pega as categorias existentes
+    const categorias = [
+        "Todas",
+        ...new Set(
+            cardapiosDaUnidade.map(function (item) {
+                return item.categoria;
+            })
+        )
+    ];
+
+    container.innerHTML = "";
+
+    categorias.forEach(function (categoria) {
+
+        const botao = document.createElement("button");
+
+        botao.type = "button";
+        botao.textContent = categoria;
+
+        if (categoria === categoriaSelecionada) {
+            botao.classList.add("ativo");
+        }
+
+        botao.addEventListener("click", function () {
+
+            categoriaSelecionada = categoria;
+
+            renderizarCategorias();
+            renderizarCardapio();
+
+        });
+
+        container.appendChild(botao);
+
+    });
+
+}
+
+
+// ==========================================
+// MOSTRAR CARDÁPIO
+// ==========================================
+
+function renderizarCardapio() {
+
+    const lista = document.getElementById("listaCardapio");
+
+    if (!lista || !unidadeSelecionada) return;
+
+    // Busca cardápios da unidade escolhida
+    let cardapiosFiltrados = cardapios.filter(function (item) {
+
+        return item.unidadeId === unidadeSelecionada.id;
+
+    });
+
+    // Filtra pela categoria
+    if (categoriaSelecionada !== "Todas") {
+
+        cardapiosFiltrados = cardapiosFiltrados.filter(function (item) {
+
+            return item.categoria === categoriaSelecionada;
+
+        });
+
+    }
+
+    lista.innerHTML = "";
+
+    // Caso a unidade ainda não tenha cardápio cadastrado
+    if (cardapiosFiltrados.length === 0) {
+
+        lista.innerHTML = `
+            <p class="mensagem-vazia">
+                O cardápio desta unidade ainda não foi cadastrado.
+            </p>
+        `;
+
+        return;
+    }
+
+
+    // Cria os cards das experiências
+    cardapiosFiltrados.forEach(function (experiencia) {
+
+        lista.innerHTML += `
+
+            <article class="card-cardapio">
+
+                <span class="categoria">
+                    ${experiencia.categoria}
+                </span>
+
+                <h3>
+                    ${experiencia.nome}
+                </h3>
+
+                <p>
+                    ${experiencia.descricao}
+                </p>
+
+                <div class="experiencia-etapas">
+
+                    <span>Entrada</span>
+                    <span>Prato principal</span>
+                    <span>Sobremesa</span>
+
+                </div>
+
+                <strong>
+                    R$ ${experiencia.preco.toFixed(2).replace(".", ",")}
+                </strong>
+
+                <p class="sem-spoiler">
+                    O menu é uma surpresa. 
+                    Você escolhe a experiência, 
+                    a cozinha prepara o resto.
+                </p>
+
+            </article>
+
+        `;
+
+    });
+
+}
+
+
+
 
 
 // Etapas de reserva da Mari, n sei se era isso //
