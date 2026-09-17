@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
- 
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -19,37 +19,36 @@ header{
     padding: 10px;
     text-align: center;
 }
- 
+
 nav {
     display: flex;
     align-items: center; 
     background-color: #59140D; 
     padding: 10px 30px;
 }
- 
-/* LOGO */
+
+
 .logo {
     display: flex;
     align-items: center; 
     gap: 10px; 
-    /* empurra o menu para o lado direito */
     margin-right: auto;
 }
- 
+
 .logo img {
     width: 100px;
     height: 100px; 
     border-radius: 50%;
     object-fit: cover;
 }
- 
+
 .logo a {
     color: #fbf6f6;
     text-decoration: none; 
     font-family: "Playfair Display", serif;
     font-size: 22px;
 }
- 
+
 nav ul {
     display: flex;
     align-items: center; 
@@ -61,7 +60,7 @@ nav ul li  {
     display: inline-block;
     margin: 0 10px;
 }
- 
+
 nav ul li a {
     color: #fbf6f6;
     text-decoration: none;
@@ -86,13 +85,6 @@ main section {
     color: #fbf6f6;
 }
 
-
-
-
-
-
- 
-/* BOTÃO RESERVA */
 .reserva {
     display: inline-block; 
     background-color: #2a0302;
@@ -103,15 +95,10 @@ main section {
     cursor: pointer; 
     transition: background-color 0.3s ease;
 }
- 
+
 .reserva:hover {
     background-color: #3d0806;
 }
-
-
-
-
-
 
 @media (max-width: 768px) {
 main {
@@ -128,5 +115,4 @@ flex-direction: column;
     text-decoration: none; 
     cursor: pointer; 
     transition: background-color 0.3s ease;
-    
 }
