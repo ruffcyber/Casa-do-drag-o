@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="css/style.css">
+
+        <script src="js/dados.js" defer></script>
+        <script src="js/app.js" defer></script>
+
+            <title>Casa de Quem | Franquia de Restaurantes Caseiros</title> 
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>        
+        <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Tinos:ital, wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    </head>
+
+    <body>
+        <header>
+            
+            <div class="logo">
+                    <img src="https://i.pinimg.com/736x/3b/87/59/3b8759948dd41986eb12393544027f37.jpg"  alt="Logo">
+                    <a href="#inicio">Casa de Quem</a>
+            </div>
+                
+            <nav class="nav">
+                    <a href="#inicio">Início</a>
+                    <a href="#unidades">Unidades</a>
+                    <a href="#cardapio">Cardápio</a>
+                    <a href="reservas.html">Minhas Reservas</a>
+                    <a href="#contato">Contato</a>
+            </nav>
+
+        </header>
+
+        <main>  
+            <section class="main" id="inicio">
+                <p>FRANQUIA DE RESTAURANTES CASEIROS</p>
+                <h2>A mesa  </h2>
+                <h3>de todo mundo</h3>
+                <h4>é aqui.</h4>
+                <p> Na Casa de Quem, cada prato é preparado com carinho e amor, <br> como se estivesse com sua família. <br> Comida caseira de verdade, <br>em um lugar onde todos se sentem em casa. </p>
+                <button class="btn-unidade"><a href="#unidades">Escolha uma de nossas unidades</a>
+                </button>
+            </section>
+
+
+            <section class="secao1" id="unidades">                      
+                   
+                <h2>
+                    Nossas Unidades
+                </h2>
+                <p>
+                    Escolha uma unidade para visualizar o cardápio e fazer sua reserva.
+                </p>
+                    
+                <input
+                        type="search"
+                        id="buscaUnidade"
+                        placeholder="Buscar unidade, cidade ou bairro..."
+                >
+
+                <div id="listaUnidades"></div>
+
+            </section>
+
+            <section class= secao2 id="cardapio">
+
+                <h2 id="nomeUnidadeCardapio">
+                    Cardápio
+                </h2>
+
+                <p>
+                    Todas as nossas opções de experiências acompanham uma entrada, prato principal e sobremesa. Selecione uma categoria para visualizar as experiências disponíveis.
+                </p>
+
+                <p id="mensagemCardapio">
+                    Selecione uma unidade para visualizar
+                    o cardápio.
+                </p>
+
+                <div id="categoriasCardapio"></div>
+
+                <div id="listaCardapio"></div>
+
+            </section>
+    
+            <section class="reserva-etapa1" id="reserva-etapa1">                                  
+                   
+                <div class="reseva-header1" id="reserva-header1">
+                    <p class="passo">Passo 1 de 3</p>                
+                    <h2 id="tituloreserva">Quando você vem?</h2>
+                    <button type="button" class="btn-fechar">X</button>
+                </div>                              
+ 
+                <div class="reserva-body1" id="reserva-body1">
+                    <form class="formreserva-etapa1" id="formreserva-etapa1">
+                        <label for="unidade">UNIDADE</label>
+                            <select id="reservaunidade" name="unidade" required>
+                                    <option value="">Selecione uma unidade...</option>
+                                    <option value="centro">Araçatuba - Centro</option>
+                                    <option value="shopping">Araçatuba - Shopping</option>
+                                    <option value="birigui">Birigui</option>
+                                    <option value="riopreto">São José do Rio Preto</option>
+                            </select>
+ 
+                        <label>Data</label><input type="date" id="reservadata" required>
+                        <label>Horário
+                        <label><input type="radio" value="18:30"> 18:30</label>
+                        <label><input type="radio" value="19:00"> 19:00</label>
+                        <label><input type="radio" value="19:30"> 19:30</label>
+                        <label><input type="radio" value="20:00"> 20:00</label>
+                        <label><input type="radio" value="20:30"> 20:30</label>
+                        <label><input type="radio" value="21:00"> 21:00</label>
+                        </label>
+                           
+                        <label>Número de pessoas
+                            <input type="radio" value="1"> 1
+                            <input type="radio" value="2"> 2    
+                            <input type="radio" value="3"> 3
+                            <input type="radio" value="4"> 4
+                            <input type="radio" value="5"> 5
+                            <input type="radio" value="6"> 6    
+                            <input type="radio" value="7-10"> 7-10
+                            <input type="radio" value="+10"> +10
+                        </label>
+                    </form>    
+ 
+                <button id="btnEtapa1">Continuar</button>
+                </div>
+           </section>
+ 
+           <section class="reserva-etapa2" id="reserva-etapa2">
+               
+                <div class="reseva-header2" id="reserva-header2">
+                    <p class="passo">Passo 2 de 3</p>                
+                    <h2 class="tituloreserva">Seus Dados</h2>
+                    <button type="button" class="btn-fechar">X</button>
+                </div>      
+                                 
+                <div class="reserva-body" id="reserva-body">
+                    <form class="formreserva-etapa2" id="formreserva-etapa2">
+                        <label for="nome">NOME</label>
+                            <input type="text" name="nome" required>
+ 
+                        <label for="email">EMAIL</label>
+                            <input type="email" name="email" required>
+ 
+                        <label for="telefone">TELEFONE</label>
+                            <input type="tel" name="telefone" required>
+ 
+                        <label for="mensagem">OBSERVAÇÕES <i>(opcional)</i></label>
+                            <textarea placeholder="Alergias, restrições alimentares, etc..." name="mensagem"></textarea>
+ 
+                    </form>
+ 
+                <button id="btnVoltar">Voltar</button>
+                <button id="btnEtapa2">Continuar</button>
+                </div>
+           </section>
+ 
+            <section class="reserva-etapa3" id="reserva-etapa3">
+               
+                <div class="reseva-header3" id="reserva-header3">
+                    <p class="passo">Passo 3 de 3</p>                
+                    <h2 class="tituloreserva">Confirmação</h2>
+                    <button type="button" class="btn-fechar">X</button>
+                </div>      
+                                 
+                <div class="reserva-body" id="reserva-body">
+                    <form class="formreserva-etapa2" id="formreserva-etapa2">
+                        <label for="nome">NOME</label>
+                            <input type="text" name="nome" required>
+ 
+                        <label for="email">EMAIL</label>
+                            <input type="email" name="email" required>
+ 
+                        <label for="telefone">TELEFONE</label>
+                            <input type="tel" name="telefone" required>
+ 
+                        <label for="mensagem">OBSERVAÇÕES <i>(opcional)</i></label>
+                            <textarea placeholder="Alergias, restrições alimentares, etc..." name="mensagem"></textarea>
+ 
+                    </form>
+ 
+                <button id="btnVoltar">Voltar</button>
+                <button id="btnEtapa2">Continuar</button>
+                </div>
+           </section>
+
+           <section class="franquias" id="franquias">
+                <h1>Seja um franqueado</h1>
+                <p>Quer fazer parte da nossa família? Descubra como se tornar um franqueado da Casa de Quem e levar a experiência decomidacaseira para mais pessoas.</p>
+                <button class="btn-franquia"><a href="#contato">Saiba mais</a></button>
+            </section>
+            
+            <section class="contato" id="contato">
+                <h1>Entre em contato</h1>
+                <p>Tem alguma dúvida ou sugestão? Entre em contato conosco através do formulário abaixo:</p>
+                <form id="contato-form">
+                    <label for="nome-contato">Nome:</label>
+                    <input type="text" id="nome-contato" name="nome-contato" required>
+            
+                    <label for="email-contato">Email:</label>
+                    <input type="email" id="email-contato" name="email-contato" required>
+            
+                    <label for="mensagem">Mensagem:</label>
+                    <textarea id="mensagem" name="mensagem" required></textarea>
+            
+                    <button type="submit">Enviar</button>
+                </form>
+            </section>
+            
+            <footer>
+                <p>&copy; 2026 Casa de Quem. Todos os direitos reservados.</p>
+            </footer>
+        </main>
+    </body>
+</html>
