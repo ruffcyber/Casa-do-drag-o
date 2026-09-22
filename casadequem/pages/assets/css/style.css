@@ -448,6 +448,31 @@ main section {
 }
 
 
+/* CHAMADA PARA RESERVA */
+
+.chamada-reserva {
+    text-align: center;
+
+    padding: 50px 20px;
+}
+
+
+.chamada-reserva h2 {
+    font-family: "Playfair Display", serif;
+
+    color: var(--vinho);
+
+    margin-bottom: 10px;
+}
+
+
+.chamada-reserva p {
+    color: var(--cinza);
+
+    margin-bottom: 10px;
+}
+
+
 /* JANELA DA RESERVA */
 
 .reserva-overlay {
