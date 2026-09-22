@@ -3,115 +3,825 @@
     padding: 0;
     box-sizing: border-box;
 }
- 
+
+
+/* CORES DO SITE */
+
+:root {
+    --vinho: #59140D;
+    --vinho-escuro: #2a0302;
+    --vinho-hover: #3d0806;
+    --rosa: #b87070;
+    --dourado: #c9a96e;
+    --fundo: #f5f1f1;
+    --branco: #fcfcfc;
+    --texto: #030303;
+    --cinza: #7a6e6b;
+    --borda: #ddd;
+}
+
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: #f5f1f1;
-    color: #030303;
-    margin: 10px;
-    padding: 20px;
-    border: 1px solid #ccc;
+    background-color: var(--fundo);
+    color: var(--texto);
 }
+
+
+/* CABEÇALHO */
+
 header {
-    background-color: #59140D;
+    background-color: var(--vinho);
     color: #fbf6f6;
-    padding: 10px;
-    text-align: center;
+
     display: flex;
     align-items: center;
-    background-color: #59140D;
+
     padding: 10px 30px;
 }
- 
- 
+
+
 .logo {
     display: flex;
     align-items: center;
     gap: 10px;
+
     margin-right: auto;
 }
- 
+
+
 .logo img {
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
+
     border-radius: 50%;
+
     object-fit: cover;
 }
- 
+
+
 .logo a {
     color: #fbf6f6;
+
     text-decoration: none;
+
     font-family: "Playfair Display", serif;
+
     font-size: 22px;
 }
- 
-nav {
+
+
+/* MENU */
+
+.nav {
     display: flex;
+
     align-items: center;
+
     gap: 20px;
-    list-style: none;
 }
- 
-nav {
-    display: inline-block;
-    margin: 0 10px;
-}
- 
-nav a {
+
+
+.nav a {
     color: #fbf6f6;
+
     text-decoration: none;
 }
- 
+
+
+/* SEÇÕES */
+
 main section {
-    flex: 1;
     padding: 20px;
-    background-color: #fcfcfc;
+
+    background-color: var(--branco);
+
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-   
- 
+
+
+/* INÍCIO */
+
 .inicio {
-    text-align: left;
-    padding: 300px 100px;
-    background-image: url('https://i.pinimg.com/736x/bd/fc/28/bdfc2866beca2445bb1fccde445b3b02.jpg');
-    background-size: cover;
-    background-position: center;
-    font-family: "Playfair Display", serif;
-    font-size: 18px;
-    font-weight: 400;
+    padding: 200px 60px;
+
     color: #fbf6f6;
+
+    background-image: url(
+        'https://images.unsplash.com/photo-1778694277039-5cbf0b9a1fcf?w=1600&h=900&fit=crop&auto=format&ixlib=rb-4.0.3&q=80'
+    );
+
+    background-size: cover;
+
+    background-position: center;
 }
- 
+
+
+.inicio h2,
+.inicio h3,
+.inicio h4 {
+    font-family: "Playfair Display", serif;
+
+    font-size: 40px;
+
+    line-height: 1.1;
+}
+
+
+.inicio h3 {
+    color: var(--rosa);
+}
+
+
+.inicio p {
+    margin-top: 10px;
+}
+
+
+/* BOTÕES PRINCIPAIS */
+
+.btn-unidade,
+.btn-franquia,
 .reserva {
     display: inline-block;
-    background-color: #2a0302;
+
+    background-color: var(--vinho-escuro);
+
     color: #fbf6f6;
+
     padding: 15px 20px;
+
+    border: none;
+
     border-radius: 10px;
+
     text-decoration: none;
+
     cursor: pointer;
-    transition: background-color 0.3s ease;
+
+    margin-top: 16px;
 }
- 
+
+
+.btn-unidade:hover,
+.btn-franquia:hover,
 .reserva:hover {
-    background-color: #3d0806;
+    background-color: var(--vinho-hover);
 }
- 
-@media (max-width: 768px) {
-main {
-flex-direction: column;
+
+
+/* INFORMAÇÕES */
+
+.info {
+    display: flex;
+
+    align-items: center;
+
+    text-align: center;
+
+    gap: 20px;
+
+    background-color: var(--rosa);
 }
+
+
+.info-item {
+    flex: 1;
+
+    padding: 20px;
+
+    color: #fbf6f6;
 }
- 
-.btn-cardapio {
-    display: inline-block;
-    background-color: #2a0302;
-    text-emphasis-color: calc();
-    padding: 15px 20px;
+
+
+/* HISTÓRIA */
+
+.historia {
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+.historia .imagem,
+.historia .texto {
+    flex: 1;
+}
+
+
+.historia .imagem {
+    text-align: center;
+}
+
+
+.historia .imagem img {
+    max-width: 100%;
+
     border-radius: 10px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
- 
+
+
+.historia h1 {
+    font-family: "Playfair Display", serif;
+
+    font-size: 30px;
+
+    color: var(--rosa);
+}
+
+
+.historia h2 {
+    font-family: "Playfair Display", serif;
+
+    font-size: 40px;
+
+    margin-bottom: 10px;
+}
+
+
+.historia p {
+    color: var(--cinza);
+
+    margin-bottom: 10px;
+}
+
+
+/* UNIDADES */
+
+#buscaUnidade {
+    width: 100%;
+
+    max-width: 420px;
+
+    padding: 12px 14px;
+
+    border: 1px solid var(--borda);
+
+    border-radius: 10px;
+
+    margin: 16px 0 24px;
+}
+
+
+#buscaUnidade:focus {
+    outline: none;
+
+    border-color: var(--vinho);
+}
+
+
+#listaUnidades {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(240px, 1fr));
+
+    gap: 16px;
+}
+
+
+.card-unidade {
+    border: 1px solid var(--borda);
+
+    border-radius: 12px;
+
+    background-color: #fff;
+
+    padding: 18px;
+}
+
+
+.card-unidade h3 {
+    font-family: "Playfair Display", serif;
+
+    margin: 8px 0;
+}
+
+
+.card-unidade p {
+    margin-bottom: 6px;
+}
+
+
+.card-unidade button {
+    margin-top: 10px;
+
+    background-color: var(--vinho-escuro);
+
+    color: #fff;
+
+    border: none;
+
+    padding: 10px 16px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+
+.card-unidade button:hover {
+    background-color: var(--vinho-hover);
+}
+
+
+/* STATUS DAS UNIDADES */
+
+.status {
+    display: inline-block;
+
+    font-size: 12px;
+
+    padding: 4px 10px;
+
+    border-radius: 20px;
+
+    font-weight: bold;
+}
+
+
+.status.disponivel {
+    background-color: #e3f3e6;
+
+    color: #1e6b2f;
+}
+
+
+.status.alta-procura {
+    background-color: #fdf0d8;
+
+    color: #8a5a00;
+}
+
+
+.status.lotado {
+    background-color: #fbe1df;
+
+    color: var(--vinho-escuro);
+}
+
+
+.mensagem-vazia {
+    color: #777;
+
+    font-style: italic;
+}
+
+
+/* CARDÁPIO */
+
+#categoriasCardapio {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin: 16px 0;
+}
+
+
+#categoriasCardapio button {
+    padding: 8px 16px;
+
+    border: 1px solid var(--borda);
+
+    border-radius: 20px;
+
+    background-color: #fff;
+
+    cursor: pointer;
+}
+
+
+#categoriasCardapio button.ativo {
+    background-color: var(--vinho);
+
+    color: #fff;
+}
+
+
+#listaCardapio {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(240px, 1fr));
+
+    gap: 16px;
+}
+
+
+.card-cardapio {
+    border: 1px solid var(--borda);
+
+    border-radius: 12px;
+
+    background-color: #fff;
+
+    padding: 18px;
+}
+
+
+.card-cardapio h3 {
+    font-family: "Playfair Display", serif;
+
+    margin-bottom: 6px;
+}
+
+
+.card-cardapio .categoria {
+    color: var(--vinho);
+
+    font-weight: bold;
+}
+
+
+.card-cardapio strong {
+    display: block;
+
+    margin-top: 8px;
+
+    color: var(--vinho-escuro);
+}
+
+
+/* JANELA DA RESERVA */
+
+.reserva-overlay {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.55);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 999;
+}
+
+
+.reserva-overlay[hidden] {
+    display: none;
+}
+
+
+.reserva-modal {
+    width: 480px;
+
+    max-width: 100%;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background-color: var(--branco);
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+
+/* CABEÇALHO DA RESERVA */
+
+.reserva-header {
+    position: relative;
+
+    background-color: var(--vinho);
+
+    color: #fbf6f6;
+
+    padding: 24px;
+}
+
+
+.passo {
+    font-size: 12px;
+
+    margin-bottom: 4px;
+}
+
+
+.tituloreserva {
+    font-family: "Playfair Display", serif;
+
+    font-size: 24px;
+}
+
+
+.btn-fechar {
+    position: absolute;
+
+    top: 14px;
+
+    right: 14px;
+
+    width: 32px;
+
+    height: 32px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background-color: transparent;
+
+    color: #fff;
+
+    cursor: pointer;
+}
+
+
+/* BARRINHA DO PASSO */
+
+.reserva-progresso {
+    height: 4px;
+
+    background-color: #ddd;
+}
+
+
+.reserva-progresso span {
+    display: block;
+
+    height: 100%;
+
+    background-color: var(--vinho);
+}
+
+
+/* CORPO DA RESERVA */
+
+.reserva-body,
+.reserva-body3 {
+    padding: 24px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+
+#formreserva-etapa1,
+#formreserva-etapa2 {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+
+/* CAMPOS */
+
+.campo label,
+.grupo-pill legend {
+    display: block;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    color: var(--vinho);
+
+    margin-bottom: 6px;
+}
+
+
+.reserva-modal select,
+.reserva-modal input[type="date"],
+.reserva-modal input[type="text"],
+.reserva-modal input[type="email"],
+.reserva-modal input[type="tel"],
+.reserva-modal textarea {
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border: 1px solid var(--borda);
+
+    border-radius: 10px;
+
+    font-family: Arial, sans-serif;
+}
+
+
+.reserva-modal textarea {
+    min-height: 80px;
+
+    resize: vertical;
+}
+
+
+/* HORÁRIOS E PESSOAS */
+
+.grupo-pill {
+    border: none;
+}
+
+
+.pill-grid {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+
+/*
+esconde a bolinha original do radio,
+mas o input continua funcionando
+*/
+
+.pill-grid input[type="radio"] {
+    position: absolute;
+
+    width: 1px;
+
+    height: 1px;
+
+    overflow: hidden;
+}
+
+
+.pill-grid label {
+    padding: 8px 16px;
+
+    border: 1px solid var(--borda);
+
+    border-radius: 20px;
+
+    cursor: pointer;
+}
+
+
+/* opção que a pessoa marcou */
+
+.pill-grid input[type="radio"]:checked + label {
+    background-color: var(--vinho);
+
+    border-color: var(--vinho);
+
+    color: #fff;
+}
+
+
+/* BOTÕES DA RESERVA */
+
+.btn-primario {
+    background-color: var(--vinho-escuro);
+
+    color: #fff;
+
+    border: none;
+
+    padding: 14px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+
+.btn-primario:hover {
+    background-color: var(--vinho-hover);
+}
+
+
+.btn-secundario {
+    background-color: transparent;
+
+    color: var(--vinho-escuro);
+
+    border: 1px solid var(--vinho-escuro);
+
+    padding: 14px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+
+.botoes-rodape {
+    display: flex;
+
+    gap: 12px;
+}
+
+
+.botoes-rodape button {
+    flex: 1;
+}
+
+
+/* CONFIRMAÇÃO */
+
+.reserva-body3 p {
+    padding: 10px 0;
+
+    border-bottom: 1px solid #eee;
+}
+
+
+/* CONTATO */
+
+.contato form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    max-width: 480px;
+
+    margin-top: 16px;
+}
+
+
+.contato input,
+.contato textarea {
+    padding: 12px 14px;
+
+    border: 1px solid var(--borda);
+
+    border-radius: 10px;
+}
+
+
+.contato button {
+    background-color: var(--vinho-escuro);
+
+    color: #fff;
+
+    border: none;
+
+    padding: 12px 20px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+
+/* RODAPÉ */
+
+footer {
+    background-color: var(--vinho);
+
+    color: #fff;
+
+    text-align: center;
+
+    padding: 20px;
+}
+
+
+/* CELULAR */
+
+@media (max-width: 768px) {
+
+    header {
+        flex-direction: column;
+    }
+
+
+    .nav {
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+
+    .historia {
+        flex-direction: column;
+    }
+
+
+    .info {
+        flex-direction: column;
+    }
+
+
+    .inicio {
+        padding: 100px 30px;
+    }
+
+}
