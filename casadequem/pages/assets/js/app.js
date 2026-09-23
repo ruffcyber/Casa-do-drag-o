@@ -263,6 +263,7 @@ function mostrarCategorias() {
     ];
 
 
+
     for (let categoria of categorias) {
 
         const botao =

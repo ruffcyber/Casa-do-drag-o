@@ -448,6 +448,8 @@ main section {
 }
 
 
+
+
 /* CHAMADA PARA RESERVA */
 
 .chamada-reserva {
@@ -768,21 +770,54 @@ mas o input continua funcionando
 
 /* CONTATO */
 
-.contato form {
-    display: flex;
+.contato {
 
+    padding: 30px 20px;
+
+    margin: 60px;
+
+    justify-content: center;
+    
+    border-radius: 16px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.35);
+    text-align: center;
+
+    padding: 50px 20px;
+   
+}
+
+.contato form {
+
+
+    display: flex;
+     
     flex-direction: column;
 
     gap: 10px;
 
-    max-width: 480px;
-
     margin-top: 16px;
+}
+
+.titulo-contato {
+
+    
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 30px;
+
+    color: var(--vinho);
+    
+
 }
 
 
 .contato input,
 .contato textarea {
+    
+    
     padding: 12px 14px;
 
     border: 1px solid var(--borda);
@@ -809,7 +844,8 @@ mas o input continua funcionando
 /* RODAPÉ */
 
 footer {
-    background-color: var(--vinho);
+    
+    background-color:black;
 
     color: #fff;
 
