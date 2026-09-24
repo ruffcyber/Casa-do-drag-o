@@ -772,9 +772,9 @@ mas o input continua funcionando
 
 .contato {
 
-    padding: 30px 20px;
+    padding: 100px 20px;
 
-    margin: 60px;
+    margin: 280px;
 
     justify-content: center;
     
@@ -784,7 +784,7 @@ mas o input continua funcionando
         0 20px 60px rgba(0, 0, 0, 0.35);
     text-align: center;
 
-    padding: 50px 20px;
+
    
 }
 
@@ -798,6 +798,8 @@ mas o input continua funcionando
     gap: 10px;
 
     margin-top: 16px;
+
+    font-size: 18px
 }
 
 .titulo-contato {
@@ -806,10 +808,15 @@ mas o input continua funcionando
 
     font-family: "Playfair Display", serif;
 
-    font-size: 30px;
+    font-size: 50px;
 
     color: var(--vinho);
     
+
+}
+
+.texto-contato{
+    font-size: 20px;
 
 }
 
@@ -838,20 +845,98 @@ mas o input continua funcionando
     border-radius: 10px;
 
     cursor: pointer;
+     
+    font-size: 18px
 }
 
 
 /* RODAPÉ */
 
 footer {
+ 
     
-    background-color:black;
+    background-color:#2c2320;
 
     color: #fff;
 
     text-align: center;
 
+   
+}
+footer,h1{
+    color:#c9a96e
+}
+footer,ul {
+
+    list-style-type: none; /* Remove as bolinhas */
+
+}
+
+.info-footer{
+   
+
+    background-color:#2c2320;
+
+    display: flex;
+
+    align-items: center;
+
+    text-align: center;
+
+    gap: 20px;
+
+    
+}
+.lista-footer1{
+    
+
+    flex: 1;
+
     padding: 20px;
+
+    color: #fbf6f6;
+
+    list-style-type: none; /* Remove as bolinhas */
+        
+
+}
+
+.lista-footer2{
+
+    flex: 1;
+
+    padding: 20px;
+
+    color: #fbf6f6;
+
+       
+
+}
+.lista-footer3{
+
+    flex: 1;
+
+    padding: 20px;
+
+    color: #fbf6f6;
+
+       
+
+}
+
+
+
+footer, li{
+
+    color: rgba(249, 243, 236, 0.55);
+
+
+}
+
+.direitos-footer{
+
+    color: rgba(249, 243, 236, 0.55);
+    text-align: right
 }
 
 
