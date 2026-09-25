@@ -133,6 +133,11 @@ main section {
     color: var(--rosa);
 }
 
+.principal{
+    
+    color:#c9a96e;
+}
+
 
 .inicio p {
     margin-top: 10px;
@@ -187,6 +192,9 @@ main section {
 
 
 .info-item {
+
+    font-size: 20px;
+
     flex: 1;
 
     padding: 20px;
@@ -229,7 +237,7 @@ main section {
 
     font-size: 30px;
 
-    color: var(--rosa);
+    color: var(--vinho);
 }
 
 
@@ -251,7 +259,32 @@ main section {
 
 /* UNIDADES */
 
+.unidades{
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.35);
+
+    padding: 80px ;
+
+    margin: 50px;
+
+    background-color:  #59140D;;
+}
+
+.unidadetexto {
+
+    color: #c9a96e;
+}
+
+.unidadeinformacao {
+
+    color: #ddd;
+}
+
 #buscaUnidade {
+
     width: 100%;
 
     max-width: 420px;
@@ -373,6 +406,39 @@ main section {
 
 /* CARDÁPIO */
 
+.cardapio{
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.35);
+
+    text-align: center;
+
+    font-size: 22px;
+
+    margin: 50px;
+    
+    padding: 450px ;
+
+    background-color:#59140D ;
+}
+
+.cardapioinfo{
+     
+    
+
+    color: #c9a96e
+    
+}
+
+.cardapiotexto{
+
+    
+    color: #ddd
+    
+}
+
 #categoriasCardapio {
     display: flex;
 
@@ -453,6 +519,7 @@ main section {
 /* CHAMADA PARA RESERVA */
 
 .chamada-reserva {
+    
     text-align: center;
 
     padding: 50px 20px;
@@ -848,6 +915,29 @@ mas o input continua funcionando
      
     font-size: 18px
 }
+
+/* FRANQUIA */
+
+.franquias{
+
+    background-color: #59140D;
+
+    padding: 80px;
+
+    margin:50px ;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.35);
+
+}
+
+.franquiastexto{
+
+    color:#ddd;
+}
+
 
 
 /* RODAPÉ */
