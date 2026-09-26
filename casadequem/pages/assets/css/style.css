@@ -39,6 +39,9 @@ header {
     align-items: center;
 
     padding: 10px 30px;
+    position: sticky;
+    top: 0;
+   
 }
 
 
@@ -80,6 +83,7 @@ header {
     align-items: center;
 
     gap: 20px;
+    
 }
 
 
