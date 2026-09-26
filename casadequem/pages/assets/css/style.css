@@ -95,7 +95,7 @@ header {
 main section {
     padding: 20px;
 
-    background-color: var(--branco);
+    background-color:#fdf9f4;;
 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -419,7 +419,7 @@ main section {
 
     margin: 50px;
     
-    padding: 450px ;
+    padding: 50px ;
 
     background-color:#59140D ;
 }
@@ -662,6 +662,9 @@ main section {
 
 .reserva-body,
 .reserva-body3 {
+
+    background-color:#fdf9f4; ;
+
     padding: 24px;
 
     display: flex;
@@ -841,7 +844,7 @@ mas o input continua funcionando
 
     padding: 100px 20px;
 
-    margin: 280px;
+    margin: 80px;
 
     justify-content: center;
     
@@ -943,13 +946,15 @@ mas o input continua funcionando
 /* RODAPÉ */
 
 footer {
- 
+   
     
     background-color:#2c2320;
 
     color: #fff;
 
     text-align: center;
+
+   
 
    
 }
@@ -973,7 +978,7 @@ footer,ul {
 
     text-align: center;
 
-    gap: 20px;
+   
 
     
 }
@@ -982,7 +987,7 @@ footer,ul {
 
     flex: 1;
 
-    padding: 20px;
+    
 
     color: #fbf6f6;
 
@@ -995,7 +1000,7 @@ footer,ul {
 
     flex: 1;
 
-    padding: 20px;
+  
 
     color: #fbf6f6;
 
@@ -1006,7 +1011,7 @@ footer,ul {
 
     flex: 1;
 
-    padding: 20px;
+   
 
     color: #fbf6f6;
 
@@ -1059,5 +1064,9 @@ footer, li{
     .inicio {
         padding: 100px 30px;
     }
+
+
+
+   
 
 }
