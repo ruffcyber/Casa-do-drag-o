@@ -28,7 +28,6 @@ const mensagemCardapio =
 
 let unidadeSelecionada = null;
 
-
 // ========================================
 // MOSTRAR UNIDADES
 // ========================================
@@ -384,6 +383,24 @@ const etapa3 =
 
 const data =
     document.getElementById("reservadata");
+
+const hoje = new Date();
+
+    let ano = hoje.getFullYear();
+    let mes = hoje.getMonth() + 1;
+    let dia = hoje.getDate();
+
+    if (mes < 10) {
+    mes = "0" + mes;
+    }
+
+    if (dia < 10) {
+        dia = "0" + dia;
+    }
+
+const dataMinima = ano + "-" + mes + "-" + dia;
+
+    data.min = dataMinima;
 
 const btnEtapa1 =
     document.getElementById("btnEtapa1");
