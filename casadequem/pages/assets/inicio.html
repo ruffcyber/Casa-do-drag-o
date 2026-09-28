@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- primeiro os dados -->
+    <script src="js/dados.js" defer></script>
+
+    <!-- depois as funcionalidades -->
+    <script src="js/app.js" defer></script>
+
+    <title>Casa de Quem | Franquia de Restaurantes Caseiros</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&display=swap"
+          rel="stylesheet">
+</head>
+
+
+<body>
+
+    <!-- CABEÇALHO -->
+
+    <header>
+
+        <div class="logo">
+
+            <img
+                src="https://i.pinimg.com/736x/3b/87/59/3b8759948dd41986eb12393544027f37.jpg"
+                alt="Logo Casa de Quem"
+            >
+
+            <a href="#inicio">
+                Casa de Quem
+            </a>
+
+        </div>
+
+
+        <nav class="nav">
+
+            <a href="#inicio">
+                Início
+            </a>
+
+            <a href="#unidades">
+                Unidades
+            </a>
+
+            <a href="#cardapio">
+                Cardápio
+            </a>
+
+            <a href="#franquias">
+                Franquia
+            </a>
+
+            <a href="#contato">
+                Contato
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+
+        <!-- INÍCIO -->
+
+        <section class="inicio" id="inicio">
+
+            <p class="principal">
+                TODA MESA TEM UMA HISTÓRIA.
+            </p>
+            <h2> A próxima </h2> 
+            <h3> pode ser </h3>
+            <h4> a sua. </h4>
+            <p>
+                Algumas pessoas chegam pela comida.
+                <br>
+                Outras, pela curiosidade.
+                <br>
+                Cada mesa guarda uma experiência diferente e nem sempre você sabe quem vai fazer parte dela.
+                <br>
+                Chegue com fome. Saia com uma história.                
+            </p>
+
+            <a
+                class="btn-unidade"
+                href="#unidades"
+            >
+                Conheça nossas unidades
+            </a>
+
+        </section>
+
+        <!-- INFORMAÇÕES -->
+
+        <section class="historia" id="historia">
+
+            <div class="imagem">
+
+                <img
+                    src="https://images.unsplash.com/photo-1761526341843-798565866073?w=550&h=460&fit=crop&auto=format&ixlib=rb-4.0.3&q=80"
+                    alt="Dona Luzia Faria"
+                >
+
+            </div>
+
+
+            <div class="texto">
+
+                <h1 class="textohistoria">
+                    Nossa proposta.
+                </h1>
+
+                <h2>
+                    E se um restaurante pudesse provocar encontros da mesma forma que uma obra provoca o público?
+                </h2>
+
+                <p>
+                    Um espaço onde o cardápio não oferece apenas sabores, mas experiências pensadas para despertar curiosidade, conversa e descoberta.
+
+                    <br>
+
+                    Assim como no teatro, o público também ajuda a construir aquilo que esta acontecendo. Cada conversa, reação e encontro tornaria aquela experiência impossível de ser repetida exatamente da mesma maneira.
+
+                    <br>
+
+                    Não escolha o de sempre. Escolha viver.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- UNIDADES -->
+
+        <section class="unidades" id="unidades">
+
+            <h2 class="unidadetexto">
+                Nossas Unidades
+            </h2>
+
+            <p class="unidadeinformacao">
+                Escolha uma unidade para visualizar
+                o cardápio e fazer sua reserva.
+            </p>
+
+
+            <input
+                type="search"
+                id="buscaUnidade"
+                placeholder="Buscar unidade, cidade ou bairro..."
+            >
+
+
+            <!-- preenchido pelo JavaScript -->
+
+            <div id="listaUnidades"></div>
+
+        </section>
+
+
+        <!-- CARDÁPIO -->
+
+        <section class="cardapio" id="cardapio">
+
+            <h2 class="cardapioinfo" id="nomeUnidadeCardapio">
+                Cardápio
+            </h2>
+
+            <p class="cardapiotexto">
+                Escolha uma unidade para conhecer
+                nossas experiências.
+            </p>
+
+            <p class="cardapiotexto" id="mensagemCardapio">
+                Selecione uma unidade para visualizar
+                o cardápio.
+            </p>
+
+
+            <!-- preenchidos pelo JavaScript -->
+
+            <div id="categoriasCardapio"></div>
+
+            <div id="listaCardapio"></div>
+
+        </section>
+
+
+        <!-- CHAMADA PARA RESERVA -->
+
+        <section class="chamada-reserva">
+
+            <h2 >
+                Gostou do nosso cardápio?
+            </h2>
+
+            <p>
+                Escolha sua unidade, data e horário
+                e venha viver essa experiência com a gente.
+            </p>
+
+            <button
+                type="button"
+                class="reserva"
+                id="abrirReserva"
+            >
+                Fazer Reserva
+            </button>
+
+        </section>
+
+
+        <!-- RESERVA -->
+
+        <!-- fica escondida até clicar em Fazer Reserva -->
+
+        <div
+            class="reserva-overlay"
+            id="reservaOverlay"
+            hidden
+        >
+
+            <div class="reserva-modal">
+
+
+                <!-- ETAPA 1 -->
+
+                <section
+                    class="reserva-etapa1"
+                    id="reserva-etapa1"
+                >
+
+                    <div class="reserva-header">
+
+                        <button
+                            type="button"
+                            class="btn-fechar"
+                        >
+                            X
+                        </button>
+
+                        <p class="passo">
+                            Passo 1 de 3
+                        </p>
+
+                        <h2 class="tituloreserva">
+                            Quando você vem?
+                        </h2>
+
+                    </div>
+
+
+                    <div class="reserva-progresso">
+
+                        <span style="width: 33%;"></span>
+
+                    </div>
+
+
+                    <div class="reserva-body">
+
+                        <form id="formreserva-etapa1">
+
+
+                            <!-- UNIDADE -->
+
+                            <div class="campo">
+
+                                <label for="reservaunidade">
+                                    Unidade
+                                </label>
+
+                                <select
+                                    id="reservaunidade"
+                                    name="unidade"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Selecione uma unidade...
+                                    </option>
+
+                                    <!-- preenchido pelo JS -->
+
+                                </select>
+
+                            </div>
+
+
+                            <!-- DATA -->
+
+                            <div class="campo">
+
+                                <label for="reservadata">
+                                    Data
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="reservadata"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- HORÁRIO -->
+
+                            <fieldset class="grupo-pill">
+
+                                <legend>
+                                    Horário
+                                </legend>
+
+                                <div class="pill-grid">
+
+                                    <input
+                                        type="radio"
+                                        name="horario"
+                                        value="18:30"
+                                        id="h1830"
+                                    >
+
+                                    <label for="h1830">
+                                        18:30
+                                    </label>
+
+
+                                    <input
+                                        type="radio"
+                                        name="horario"
+                                        value="19:00"
+                                        id="h1900"
+                                    >
+
+                                    <label for="h1900">
+                                        19:00
+                                    </label>
+
+
+                                    <input
+                                        type="radio"
+                                        name="horario"
+                                        value="19:30"
+                                        id="h1930"
+                                    >
+
+                                    <label for="h1930">
+                                        19:30
+                                    </label>
+
+
+                                    <input
+                                        type="radio"
+                                        name="horario"
+                                        value="20:00"
+                                        id="h2000"
+                                    >
+
+                                    <label for="h2000">
+                                        20:00
+                                    </label>
+
+
+                                    <input
+                                        type="radio"
+                                        name="horario"
+                                        value="20:30"
+                                        id="h2030"
+                                    >
+
+                                    <label for="h2030">
+                                        20:30
+                                    </label>
+
+
+                                    <input
+                                        type="radio"
+                                        name="horario"
+                                        value="21:00"
+                                        id="h2100"
+                                    >
+
+                                    <label for="h2100">
+                                        21:00
+                                    </label>
+
+                                </div>
+
+                            </fieldset>
+
+
+                            <!-- PESSOAS -->
+
+                            <fieldset class="grupo-pill">
+
+                                <legend>
+                                    Número de pessoas
+                                </legend>
+
+                                <div class="pill-grid">
+
+                                    <input
+                                        type="radio"
+                                        name="pessoas"
+                                        value="1"
+                                        id="p1"
+                                    >
+
+                                    <label for="p1">1</label>
+
+
+                                    <input
+                                        type="radio"
+                                        name="pessoas"
+                                        value="2"
+                                        id="p2"
+                                    >
+
+                                    <label for="p2">2</label>
+
+
+                                    <input
+                                        type="radio"
+                                        name="pessoas"
+                                        value="3"
+                                        id="p3"
+                                    >
+
+                                    <label for="p3">3</label>
+
+
+                                    <input
+                                        type="radio"
+                                        name="pessoas"
+                                        value="4"
+                                        id="p4"
+                                    >
+
+                                    <label for="p4">4</label>
+
+
+                                    <input
+                                        type="radio"
+                                        name="pessoas"
+                                        value="5"
+                                        id="p5"
+                                    >
+
+                                    <label for="p5">5</label>
+
+
+                                    <input
+                                        type="radio"
+                                        name="pessoas"
+                                        value="6"
+                                        id="p6"
+                                    >
+
+                                    <label for="p6">6</label>
+
+
+                                    <input
+                                        type="radio"
+                                        name="pessoas"
+                                        value="7-10"
+                                        id="p7"
+                                    >
+
+                                    <label for="p7">
+                                        7-10
+                                    </label>
+
+
+                                    <input
+                                        type="radio"
+                                        name="pessoas"
+                                        value="+10"
+                                        id="p8"
+                                    >
+
+                                    <label for="p8">
+                                        +10
+                                    </label>
+
+                                </div>
+
+                            </fieldset>
+
+                        </form>
+
+
+                        <button
+                            type="button"
+                            id="btnEtapa1"
+                            class="btn-primario"
+                        >
+                            Continuar
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ETAPA 2 -->
+
+                <section
+                    class="reserva-etapa2"
+                    id="reserva-etapa2"
+                    hidden
+                >
+
+                    <div class="reserva-header">
+
+                        <button
+                            type="button"
+                            class="btn-fechar"
+                        >
+                            X
+                        </button>
+
+                        <p class="passo">
+                            Passo 2 de 3
+                        </p>
+
+                        <h2 class="tituloreserva">
+                            Seus Dados
+                        </h2>
+
+                    </div>
+
+
+                    <div class="reserva-progresso">
+
+                        <span style="width: 66%;"></span>
+
+                    </div>
+
+
+                    <div class="reserva-body">
+
+                        <form id="formreserva-etapa2">
+
+
+                            <div class="campo">
+
+                                <label for="nomeReserva">
+                                    Nome
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="nomeReserva"
+                                    name="nome"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="campo">
+
+                                <label for="emailReserva">
+                                    E-mail
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="emailReserva"
+                                    name="email"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="campo">
+
+                                <label for="telefoneReserva">
+                                    Telefone
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="telefoneReserva"
+                                    name="telefone"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="campo">
+
+                                <label for="mensagemReserva">
+
+                                    Observações
+
+                                    <i>
+                                        (opcional)
+                                    </i>
+
+                                </label>
+
+                                <textarea
+                                    id="mensagemReserva"
+                                    name="mensagem"
+                                    placeholder="Alergias, restrições alimentares, etc..."
+                                ></textarea>
+
+                            </div>
+
+                        </form>
+
+
+                        <div class="botoes-rodape">
+
+                            <button
+                                type="button"
+                                id="btnVoltar"
+                                class="btn-secundario"
+                            >
+                                Voltar
+                            </button>
+
+                            <button
+                                type="button"
+                                id="btnEtapa2"
+                                class="btn-primario"
+                            >
+                                Continuar
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ETAPA 3 -->
+
+                <section
+                    class="reserva-etapa3"
+                    id="reserva-etapa3"
+                    hidden
+                >
+
+                    <div class="reserva-header">
+
+                        <button
+                            type="button"
+                            class="btn-fechar"
+                        >
+                            X
+                        </button>
+
+                        <p class="passo">
+                            Passo 3 de 3
+                        </p>
+
+                        <h2 class="tituloreserva">
+                            Confirmação
+                        </h2>
+
+                    </div>
+
+
+                    <div class="reserva-progresso">
+
+                        <span style="width: 100%;"></span>
+
+                    </div>
+
+
+                    <div class="reserva-body3">
+
+                        <h3>
+                            Confira os dados da sua reserva:
+                        </h3>
+
+
+                        <p id="confirmacaoUnidade"></p>
+
+                        <p id="confirmacaoData"></p>
+
+                        <p id="confirmacaoHorario"></p>
+
+                        <p id="confirmacaoPessoas"></p>
+
+                        <p id="confirmacaoNome"></p>
+
+                        <p id="confirmacaoEmail"></p>
+
+                        <p id="confirmacaoTelefone"></p>
+
+                        <p id="confirmacaoObservacao"></p>
+
+
+                        <div class="botoes-rodape">
+
+                            <button
+                                type="button"
+                                id="btnVoltar3"
+                                class="btn-secundario"
+                            >
+                                Voltar
+                            </button>
+
+                            <button
+                                type="button"
+                                id="btnConfirmar"
+                                class="btn-primario"
+                            >
+                                Confirmar Reserva
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- FRANQUIA -->
+
+        <section
+            class="franquias"
+            id="franquias"
+        >
+
+            <h1>
+                Seja um franqueado
+            </h1>
+
+            <p class="franquiastexto">
+                Quer fazer parte da nossa família?
+                Descubra como se tornar um franqueado
+                da Casa de Quem e levar a experiência
+                de uma nova história.
+            </p>
+
+            <a
+                class="btn-franquia"
+                href="#contato"
+            >
+                Saiba mais
+            </a>
+
+        </section>
+
+        <!-- HISTÓRIA -->
+
+        <section class="info" id="info">
+
+            <div class="info-item">
+
+                <p>4</p>
+
+                <p>Unidades</p>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <p>12 anos</p>
+
+                <p>de história</p>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <p>98%</p>
+
+                <p>de satisfação</p>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <p>250k+</p>
+
+                <p>refeições/mês</p>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTATO -->
+
+        <section
+            class="contato"
+            id="contato"
+        >
+
+            <h1 class="titulo-contato">
+                Entre em contato
+            </h1>
+
+            <p class="texto-contato">
+                Tem alguma dúvida ou sugestão?
+                Entre em contato conosco através
+                do formulário abaixo:
+            </p>
+
+
+            <form id="contato-form">
+
+                <label for="nome-contato">
+                    Nome:
+                </label>
+
+                <input
+                    type="text"
+                    id="nome-contato"
+                    required
+                >
+
+
+                <label for="email-contato">
+                    Email:
+                </label>
+
+                <input
+                    type="email"
+                    id="email-contato"
+                    required
+                >
+
+
+                <label for="mensagem">
+                    Mensagem:
+                </label>
+
+                <textarea
+                    id="mensagem"
+                    required
+                ></textarea>
+
+
+                <button type="submit">
+                    Enviar
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <footer>
+            <section class="info-footer">
+           <div class="lista-footer1">
+             <ul >
+                <h1>Contato</h1>
+
+                <li>
+                    franquias@casadequem.com.br
+                </li>
+                <li>
+                    contato@casadequem.com.br
+                </li>
+                <li>
+                    0800 123 4567
+                </li>
+                <li>
+                    Seg–Sex, 9h–18h
+                </li>
+            </ul>
+           </div>
+
+           <div class="lista-footer2">   
+           
+                <h1> Unidades</h1>
+
+                <p> Araçatuba - Centro <img src="/casadequem/pages/assets/local.png" width="20" height="22"> </p>
+                
+                <p> Araçatuba - Shopping <img src="/casadequem/pages/assets/local.png" width="20" height="22"> </p>
+
+                <p> Birigui <img src="/casadequem/pages/assets/local.png" width="20" height="22"> </p>
+
+                <p> São José do Rio Preto <img src="/casadequem/pages/assets/local.png" width="20" height="22"> </p>
+                
+            </div>
+            
+             <div class="lista-footer3">
+
+                <h1>Redes Socias</h1>
+
+             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+              <img src="/casadequem/pages/assets/instagram.png" alt="Logo do Instagram" width="60" height="32">
+             </a>
+
+             <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+              <img src="/casadequem/pages/assets/face.png" alt="Logo do Instagram" width="50" height="32">
+             </a>
+
+             <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
+              <img src="/casadequem/pages/assets/youtube.png" alt="Logo do Instagram" width="50" height="32">
+             </a>
+
+             <a href="https://https://web.whatsapp.com/" target="_blank" rel="noopener noreferrer">
+              <img src="/casadequem/pages/assets/whatsapp.png" alt="Logo do Instagram" width="60" height="32">
+             </a>
+
+
+           </div>
+
+            </section>
+ 
+
+            <p class="direitos-footer">
+                &copy; 2026 Casa de Quem Franquias Ltda. Todos os direitos reservados.
+            </p>
+
+        </footer>
+
+
+    </main>
+
+</body>
+
+</html>
