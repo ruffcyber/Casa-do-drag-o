@@ -704,6 +704,23 @@ main section {
     margin-bottom: 6px;
 }
 
+.experiencia-reserva {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.experiencia-reserva label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.quantidade-pratos {
+    width: 60px;
+}
 
 .reserva-modal select,
 .reserva-modal input[type="date"],

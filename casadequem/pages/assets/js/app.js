@@ -23,6 +23,10 @@ const nomeUnidadeCardapio =
 const mensagemCardapio =
     document.getElementById("mensagemCardapio");
 
+const listaExperiencia =
+    document.getElementById("ListaExperiencia");
+
+
 
 // guarda qual unidade foi escolhida
 
@@ -169,6 +173,8 @@ buscaUnidade.addEventListener(
 );
 
 
+
+
 // ========================================
 // COLOCAR UNIDADES NO SELECT DA RESERVA
 // ========================================
@@ -190,6 +196,52 @@ for (let unidade of unidades) {
     selectUnidade.appendChild(opcao);
 
 }
+
+selectUnidade.addEventListener("change", function () {
+
+    const unidadeEscolhida = Number(selectUnidade.value);
+
+   
+    listaExperiencia.innerHTML = "";
+
+    if (selectUnidade.value === "") {
+
+    listaExperiencia.innerHTML =
+        "<p>Selecione uma unidade primeiro.</p>";
+
+    } else {
+
+        for (let i = 0; i < cardapios.length; i++) {
+
+
+            if (cardapios[i].unidadeId === unidadeEscolhida) {
+
+                listaExperiencia.innerHTML += `
+                    <div class="experiencia-reserva">
+
+                        <label>
+                            <input 
+                                type="checkbox"
+                                name="experiencias"
+                                value="${cardapios[i].id}"
+                            >
+
+                            ${cardapios[i].nome}
+                        </label>
+
+                        <input 
+                            type="number"
+                            min="1"
+                            value= "0"
+                            class="quantidade-pratos"
+                        >
+
+                    </div>
+                `;
+            }
+        }
+    }
+});
 
 
 // ========================================
@@ -467,6 +519,10 @@ btnEtapa1.addEventListener(
                 'input[name="pessoas"]:checked'
             );
 
+        const checkboxesExperiencias =
+            document.querySelectorAll('input[name="experiencias"]:checked');
+
+        
 
         // VALIDAÇÕES
 
@@ -481,7 +537,18 @@ btnEtapa1.addEventListener(
         }
 
 
-        if (data.value === "") {
+        if (checkboxesExperiencias.length === 0) {
+
+            alert(
+                "Escolha pelo menos uma experiência."
+            );
+
+            return;
+
+        }
+       
+        
+       if (data.value === "") {
 
             alert(
                 "Selecione uma data."
@@ -513,52 +580,116 @@ btnEtapa1.addEventListener(
 
         }
 
+        //guardar as opções de experiencia e números de pratos escolhidos
 
-        // criando o objeto da reserva
+        const experienciasEscolhidas = [];
 
-        const reserva = {
+        for (let checkbox of checkboxesExperiencias) {
 
-            unidade:
-                selectUnidade
-                    .options[
-                        selectUnidade.selectedIndex
-                    ]
-                    .text,
-
-            data:
-                data.value,
-
-            horario:
-                horario.value,
-
-            pessoas:
-                pessoas.value
-
-        };
+            const experienciaId =
+                Number(checkbox.value);
 
 
-        // transformando em JOHNSON
-
-        const reservaJSON =
-            JSON.stringify(reserva);
-
-
-        // guarda no navegador
-
-        localStorage.setItem(
-            "reservaEmAndamento",
-            reservaJSON
-        );
+            const experiencia =
+                cardapios.find(
+                    item => item.id === experienciaId
+                );
 
 
-        // vai para etapa 2
+            const quantidadeInput =
+                checkbox
+                    .closest(".experiencia-reserva")
+                    .querySelector(".quantidade-pratos");
 
-        etapa1.hidden = true;
 
-        etapa2.hidden = false;
+            const quantidade =
+                Number(quantidadeInput.value);
 
-    }
-);
+            
+        // VERIFICAR QUANTIDADE
+        if (
+                quantidadeInput.value === "" ||
+                quantidade < 1
+        ) {
+
+                alert(
+                    "Informe uma quantidade válida para cada experiência escolhida."
+                );
+
+                quantidadeInput.focus();
+
+                return;
+        }
+
+
+            experienciasEscolhidas.push({
+
+                id:
+                    experiencia.id,
+
+                nome:
+                    experiencia.nome,
+
+                quantidade:
+                    quantidade,
+
+                preco:
+                    experiencia.preco
+
+            });
+
+        }
+
+      
+            // criando o objeto da reserva
+
+            const reserva = {
+
+                unidade:
+                    selectUnidade
+                        .options[
+                            selectUnidade.selectedIndex
+                        ]
+                        .text,                                    
+
+                data:
+                    data.value,
+
+                horario:
+                    horario.value,
+
+                pessoas:
+                    pessoas.value,
+
+                 experiencias:
+                    experienciasEscolhidas,
+
+
+            };
+
+
+            // transformando em JOHNSON
+
+            const reservaJSON =
+                JSON.stringify(reserva);
+
+
+            // guarda no navegador
+
+            localStorage.setItem(
+                "reservaEmAndamento",
+                reservaJSON
+            );
+
+
+            // vai para etapa 2
+
+            etapa1.hidden = true;
+
+            etapa2.hidden = false;
+
+        }
+    );
 
 
 // ========================================
