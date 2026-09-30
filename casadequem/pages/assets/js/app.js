@@ -583,6 +583,7 @@ btnEtapa1.addEventListener(
         //guardar as opções de experiencia e números de pratos escolhidos
 
         const experienciasEscolhidas = [];
+        
 
         for (let checkbox of checkboxesExperiencias) {
 
@@ -640,6 +641,11 @@ btnEtapa1.addEventListener(
 
         }
 
+
+        console.log(
+            "Experiências escolhidas:",
+            experienciasEscolhidas
+        );
       
             // criando o objeto da reserva
 
@@ -664,9 +670,9 @@ btnEtapa1.addEventListener(
                  experiencias:
                     experienciasEscolhidas,
 
-
             };
 
+            console.log("OBJETO RESERVA:", reserva);
 
             // transformando em JOHNSON
 
@@ -830,7 +836,6 @@ btnEtapa2.addEventListener(
                 "Unidade: " +
                 reserva.unidade;
 
-
         document
             .getElementById(
                 "confirmacaoData"
@@ -856,6 +861,77 @@ btnEtapa2.addEventListener(
             .textContent =
                 "Número de pessoas: " +
                 reserva.pessoas;
+
+        
+        const confirmacaoExperiencias =
+        document.getElementById(
+            "confirmacaoExperiencias"
+        );
+
+
+        confirmacaoExperiencias.innerHTML =
+            "Experiências:";
+
+
+        let total = 0;
+
+        for (let experiencia of reserva.experiencias) {
+
+            // calcula o subtotal daquela experiência
+            const subtotal =
+                experiencia.preco *
+                experiencia.quantidade;
+
+
+            // soma ao total
+            total += subtotal;
+
+
+    // mostra experiência no resumo
+    confirmacaoExperiencias.innerHTML += `
+        <p>
+            ${experiencia.nome} -
+            ${experiencia.quantidade}
+            ${experiencia.quantidade === 1 ? "prato" : "pratos"}
+            ×
+            ${experiencia.preco.toLocaleString(
+                "pt-BR",
+                {
+                    style: "currency",
+                    currency: "BRL"
+                }
+            )}
+
+            =
+            ${subtotal.toLocaleString(
+                "pt-BR",
+                {
+                    style: "currency",
+                    currency: "BRL"
+                }
+            )}
+        </p>
+    `;
+}
+
+
+    // TOTAL DA RESERVA
+
+
+        document
+            .getElementById(
+                "confirmacaoTotal"
+            )
+            .textContent =
+                "Total: " +
+                total.toLocaleString(
+                    "pt-BR",
+                    {
+                        style: "currency",
+                        currency: "BRL"
+                    }
+                );
+
 
 
         document
