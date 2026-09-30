@@ -2,35 +2,20 @@
 // PEGANDO ELEMENTOS DO HTML
 // ========================================
 
-const listaUnidades =
-    document.getElementById("listaUnidades");
+const listaUnidades = document.getElementById("listaUnidades");
+const buscaUnidade = document.getElementById("buscaUnidade");
+const selectUnidade = document.getElementById("reservaunidade");
 
-const buscaUnidade =
-    document.getElementById("buscaUnidade");
+const listaCardapio = document.getElementById("listaCardapio");
+const categoriasCardapio = document.getElementById("categoriasCardapio");
+const nomeUnidadeCardapio = document.getElementById("nomeUnidadeCardapio");
+const mensagemCardapio = document.getElementById("mensagemCardapio");
 
-const selectUnidade =
-    document.getElementById("reservaunidade");
+const listaExperiencia = document.getElementById("ListaExperiencia");
 
-const listaCardapio =
-    document.getElementById("listaCardapio");
-
-const categoriasCardapio =
-    document.getElementById("categoriasCardapio");
-
-const nomeUnidadeCardapio =
-    document.getElementById("nomeUnidadeCardapio");
-
-const mensagemCardapio =
-    document.getElementById("mensagemCardapio");
-
-const listaExperiencia =
-    document.getElementById("ListaExperiencia");
-
-
-
-// guarda qual unidade foi escolhida
-
+// Guarda qual unidade foi escolhida
 let unidadeSelecionada = null;
+
 
 // ========================================
 // MOSTRAR UNIDADES
@@ -40,76 +25,49 @@ function mostrarUnidades() {
 
     listaUnidades.innerHTML = "";
 
-
-    // pega o que a pessoa digitou na busca
-
-    const textoBusca =
-        buscaUnidade.value.toLowerCase();
-
+    // Pega o que a pessoa digitou na busca
+    const textoBusca = buscaUnidade.value.toLowerCase();
 
     for (let unidade of unidades) {
 
+        const nome = unidade.nome.toLowerCase();
+        const cidade = unidade.cidade.toLowerCase();
+        const bairro = unidade.bairro.toLowerCase();
 
-        const nome =
-            unidade.nome.toLowerCase();
-
-        const cidade =
-            unidade.cidade.toLowerCase();
-
-        const bairro =
-            unidade.bairro.toLowerCase();
-
-
-        // verifica se o texto aparece
+        // Verifica se o texto aparece
         // no nome, cidade ou bairro
-
         if (
             nome.includes(textoBusca) ||
             cidade.includes(textoBusca) ||
             bairro.includes(textoBusca)
         ) {
 
-
-            // calcula a porcentagem de ocupação
-
+            // Calcula a porcentagem de ocupação
             const ocupacao =
                 unidade.ocupacaoAtual /
                 unidade.capacidade *
                 100;
 
-
             let status = "";
-
             let classeStatus = "";
-
 
             if (ocupacao >= 100) {
 
                 status = "Lotado";
-
                 classeStatus = "lotado";
 
-            }
-
-            else if (ocupacao >= 80) {
+            } else if (ocupacao >= 80) {
 
                 status = "Alta procura";
-
                 classeStatus = "alta-procura";
 
-            }
-
-            else {
+            } else {
 
                 status = "Disponível";
-
                 classeStatus = "disponivel";
-
             }
 
-
             listaUnidades.innerHTML += `
-
                 <div class="card-unidade">
 
                     <span class="status ${classeStatus}">
@@ -143,57 +101,46 @@ function mostrarUnidades() {
                     </button>
 
                 </div>
-
             `;
-
         }
-
     }
-
 }
 
 
-// mostra as unidades quando a página abre
-
+// Mostra as unidades quando a página abre
 if (listaUnidades) {
     mostrarUnidades();
 }
+
 
 // ========================================
 // PESQUISA DAS UNIDADES
 // ========================================
 
 if (buscaUnidade) {
-    
+
     buscaUnidade.addEventListener(
-    "input",
+        "input",
 
-    function () {
-
-        mostrarUnidades();
-
-    }
-);
+        function () {
+            mostrarUnidades();
+        }
+    );
 }
-
-
 
 
 // ========================================
 // COLOCAR UNIDADES NO SELECT DA RESERVA
 // ========================================
+
 if (selectUnidade) {
 
     for (let unidade of unidades) {
 
-        const opcao =
-            document.createElement("option");
+        const opcao = document.createElement("option");
 
-        opcao.value =
-            unidade.id;
-
-        opcao.textContent =
-            unidade.nome;
+        opcao.value = unidade.id;
+        opcao.textContent = unidade.nome;
 
         selectUnidade.appendChild(opcao);
     }
@@ -224,7 +171,7 @@ if (selectUnidade) {
                         <div class="experiencia-reserva">
 
                             <label>
-                                <input 
+                                <input
                                     type="checkbox"
                                     name="experiencias"
                                     value="${cardapios[i].id}"
@@ -233,7 +180,7 @@ if (selectUnidade) {
                                 ${cardapios[i].nome}
                             </label>
 
-                            <input 
+                            <input
                                 type="number"
                                 min="1"
                                 value="0"
@@ -246,8 +193,8 @@ if (selectUnidade) {
             }
         }
     });
-
 }
+
 
 // ========================================
 // ESCOLHER UNIDADE
@@ -257,48 +204,34 @@ function selecionarUnidade(id) {
 
     unidadeSelecionada = null;
 
-
-    // procura a unidade pelo id
-
+    // Procura a unidade pelo id
     for (let unidade of unidades) {
 
         if (unidade.id === id) {
-
-            unidadeSelecionada =
-                unidade;
-
+            unidadeSelecionada = unidade;
         }
-
     }
-
 
     if (unidadeSelecionada === null) {
-
         return;
-
     }
-
 
     nomeUnidadeCardapio.textContent =
         "Cardápio - " +
         unidadeSelecionada.nome;
-
 
     mensagemCardapio.textContent =
         "Você escolheu a unidade " +
         unidadeSelecionada.nome +
         ".";
 
-
     mostrarCategorias();
 
     mostrarCardapio("Todas");
 
-
     document
         .getElementById("cardapio")
         .scrollIntoView();
-
 }
 
 
@@ -310,7 +243,6 @@ function mostrarCategorias() {
 
     categoriasCardapio.innerHTML = "";
 
-
     const categorias = [
         "Todas",
         "Clássicos",
@@ -318,39 +250,24 @@ function mostrarCategorias() {
         "Especial"
     ];
 
-
-
     for (let categoria of categorias) {
 
         const botao =
             document.createElement("button");
 
-
-        botao.type =
-            "button";
-
-
-        botao.textContent =
-            categoria;
-
+        botao.type = "button";
+        botao.textContent = categoria;
 
         botao.addEventListener(
             "click",
 
             function () {
-
                 mostrarCardapio(categoria);
-
             }
         );
 
-
-        categoriasCardapio.appendChild(
-            botao
-        );
-
+        categoriasCardapio.appendChild(botao);
     }
-
 }
 
 
@@ -362,24 +279,19 @@ function mostrarCardapio(categoriaEscolhida) {
 
     listaCardapio.innerHTML = "";
 
-
     for (let item of cardapios) {
-
 
         if (
             item.unidadeId ===
             unidadeSelecionada.id
         ) {
 
-
             if (
                 categoriaEscolhida === "Todas" ||
                 item.categoria === categoriaEscolhida
             ) {
 
-
                 listaCardapio.innerHTML += `
-
                     <article class="card-cardapio">
 
                         <span class="categoria">
@@ -399,22 +311,16 @@ function mostrarCardapio(categoriaEscolhida) {
                         </strong>
 
                     </article>
-
                 `;
-
             }
-
         }
-
     }
-
 }
 
 
 // ========================================
 // RESERVA
 // ========================================
-
 
 // PEGAR
 
@@ -427,7 +333,6 @@ const abrirReserva =
 const botoesFechar =
     document.querySelectorAll(".btn-fechar");
 
-
 const etapa1 =
     document.getElementById("reserva-etapa1");
 
@@ -437,30 +342,34 @@ const etapa2 =
 const etapa3 =
     document.getElementById("reserva-etapa3");
 
-
 const data =
     document.getElementById("reservadata");
 
+
+// ========================================
+// DATA MÍNIMA DA RESERVA
+// ========================================
+
 const hoje = new Date();
 
-    let ano = hoje.getFullYear();
-    let mes = hoje.getMonth() + 1;
-    let dia = hoje.getDate();
+let ano = hoje.getFullYear();
+let mes = hoje.getMonth() + 1;
+let dia = hoje.getDate();
 
-    if (mes < 10) {
+if (mes < 10) {
     mes = "0" + mes;
-    }
-
-    if (dia < 10) {
-        dia = "0" + dia;
-    }
-
-const dataMinima = ano + "-" + mes + "-" + dia;
-
-   if (data) {
-    data.min = dataMinima;
 }
 
+if (dia < 10) {
+    dia = "0" + dia;
+}
+
+const dataMinima =
+    ano + "-" + mes + "-" + dia;
+
+if (data) {
+    data.min = dataMinima;
+}
 
 
 const btnEtapa1 =
@@ -471,22 +380,21 @@ const btnEtapa1 =
 // ABRIR RESERVA
 // ========================================
 
-if (abrirReserva)
-abrirReserva.addEventListener(
-    "click",
+if (abrirReserva) {
 
-    function () {
+    abrirReserva.addEventListener(
+        "click",
 
-        overlay.hidden = false;
+        function () {
 
-        etapa1.hidden = false;
+            overlay.hidden = false;
 
-        etapa2.hidden = true;
-
-        etapa3.hidden = true;
-
-    }
-);
+            etapa1.hidden = false;
+            etapa2.hidden = true;
+            etapa3.hidden = true;
+        }
+    );
+}
 
 
 // ========================================
@@ -499,19 +407,15 @@ for (let botao of botoesFechar) {
         "click",
 
         function () {
-
             overlay.hidden = true;
-
         }
     );
-
 }
 
 
 // ========================================
 // ETAPA 1
 // ========================================
-
 
 if (btnEtapa1) {
 
@@ -525,12 +429,10 @@ if (btnEtapa1) {
                     'input[name="horario"]:checked'
                 );
 
-
             const pessoas =
                 document.querySelector(
                     'input[name="pessoas"]:checked'
                 );
-
 
             const checkboxesExperiencias =
                 document.querySelectorAll(
@@ -655,6 +557,9 @@ if (btnEtapa1) {
                     id:
                         experiencia.id,
 
+                    codigo:
+                        experiencia.codigo,
+
                     nome:
                         experiencia.nome,
 
@@ -663,9 +568,7 @@ if (btnEtapa1) {
 
                     preco:
                         experiencia.preco
-
                 });
-
             }
 
 
@@ -693,7 +596,6 @@ if (btnEtapa1) {
 
                 experiencias:
                     experienciasEscolhidas
-
             };
 
 
@@ -726,13 +628,12 @@ if (btnEtapa1) {
             // ========================================
 
             etapa1.hidden = true;
-
             etapa2.hidden = false;
-
         }
     );
-
 }
+
+
 // ========================================
 // ETAPA 2
 // ========================================
@@ -770,12 +671,9 @@ if (btnVoltar) {
         function () {
 
             etapa2.hidden = true;
-
             etapa1.hidden = false;
-
         }
     );
-
 }
 
 
@@ -800,7 +698,6 @@ if (btnEtapa2) {
                 );
 
                 return;
-
             }
 
 
@@ -811,7 +708,6 @@ if (btnEtapa2) {
                 );
 
                 return;
-
             }
 
 
@@ -822,7 +718,6 @@ if (btnEtapa2) {
                 );
 
                 return;
-
             }
 
 
@@ -909,7 +804,9 @@ if (btnEtapa2) {
                     reserva.pessoas;
 
 
+            // ========================================
             // EXPERIÊNCIAS
+            // ========================================
 
             const confirmacaoExperiencias =
                 document.getElementById(
@@ -945,11 +842,13 @@ if (btnEtapa2) {
 
                 confirmacaoExperiencias.innerHTML += `
                     <p>
+                        ${experiencia.codigo} -
                         ${experiencia.nome} -
                         ${experiencia.quantidade}
-                        ${experiencia.quantidade === 1
-                            ? "prato"
-                            : "pratos"
+                        ${
+                            experiencia.quantidade === 1
+                                ? "prato"
+                                : "pratos"
                         }
                         ×
                         ${experiencia.preco.toLocaleString(
@@ -969,7 +868,6 @@ if (btnEtapa2) {
                         )}
                     </p>
                 `;
-
             }
 
 
@@ -992,7 +890,9 @@ if (btnEtapa2) {
                     );
 
 
+            // ========================================
             // DADOS DO CLIENTE
+            // ========================================
 
             document
                 .getElementById(
@@ -1041,19 +941,15 @@ if (btnEtapa2) {
                     .textContent =
                         "Observações: " +
                         reserva.observacao;
-
             }
 
 
             // ABRE ETAPA 3
 
             etapa2.hidden = true;
-
             etapa3.hidden = false;
-
         }
     );
-
 }
 
 
@@ -1080,12 +976,9 @@ if (btnVoltar3) {
         function () {
 
             etapa3.hidden = true;
-
             etapa2.hidden = false;
-
         }
     );
-
 }
 
 
@@ -1171,10 +1064,8 @@ if (btnConfirmar) {
             // FECHA A JANELA
 
             overlay.hidden = true;
-
         }
     );
-
 }
 
 
@@ -1197,17 +1088,13 @@ if (formularioContato) {
 
             evento.preventDefault();
 
-
             alert(
                 "Mensagem enviada com sucesso!"
             );
 
-
             formularioContato.reset();
-
         }
     );
-
 }
 
 
@@ -1254,14 +1141,12 @@ if (listaMinhasReservas) {
                 total +=
                     experiencia.preco *
                     experiencia.quantidade;
-
             }
 
 
             // COMEÇA O CARD
 
             listaMinhasReservas.innerHTML += `
-
                 <div
                     class="card-reserva"
                     data-reserva-id="${reserva.id}"
@@ -1289,7 +1174,6 @@ if (listaMinhasReservas) {
                     <h3>
                         Experiências:
                     </h3>
-
             `;
 
 
@@ -1301,22 +1185,18 @@ if (listaMinhasReservas) {
             ) {
 
                 listaMinhasReservas.innerHTML += `
-
                     <p>
                         ${experiencia.nome}
                         ×
                         ${experiencia.quantidade}
                     </p>
-
                 `;
-
             }
 
 
             // FINALIZA O CARD
 
             listaMinhasReservas.innerHTML += `
-
                     <p>
                         <strong>Total:</strong>
                         ${total.toLocaleString(
@@ -1341,52 +1221,58 @@ if (listaMinhasReservas) {
                         Cancelar reserva
                     </button>
 
-               
-
+                </div>
             `;
-
         }
-
     }
-
 }
 
 
+// ========================================
 // CANCELAR RESERVA
-
+// ========================================
 
 if (listaMinhasReservas) {
 
     listaMinhasReservas.onclick = function (event) {
 
         const botao =
-            event.target.closest(".btn-cancelar");
+            event.target.closest(
+                ".btn-cancelar"
+            );
+
 
         if (!botao) {
             return;
         }
+
 
         const id =
             Number(
                 botao.dataset.reservaId
             );
 
+
         let reservas =
             JSON.parse(
                 localStorage.getItem("reservas")
             ) || [];
 
+
         reservas =
             reservas.filter(
                 function (reserva) {
+
                     return reserva.id !== id;
                 }
             );
+
 
         localStorage.setItem(
             "reservas",
             JSON.stringify(reservas)
         );
+
 
         location.reload();
     };

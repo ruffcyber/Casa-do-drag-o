@@ -713,22 +713,45 @@ main section {
     margin-bottom: 6px;
 }
 
+/* EXPERIÊNCIAS DA RESERVA */
+
+#ListaExperiencia {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .experiencia-reserva {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 15px;
-    margin-bottom: 10px;
+    padding: 12px;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    background-color: #fff;
 }
 
 .experiencia-reserva label {
     display: flex;
     align-items: center;
     gap: 8px;
+    flex: 1;
+    cursor: pointer;
+}
+
+.experiencia-reserva input[type="checkbox"] {
+    cursor: pointer;
 }
 
 .quantidade-pratos {
     width: 60px;
+    padding: 8px;
+
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+
+    text-align: center;
 }
 
 .reserva-modal select,
@@ -988,10 +1011,10 @@ footer {
 
    
 }
-footer,h1{
+footer h1{
     color:#c9a96e
 }
-footer,ul {
+footer ul {
 
     list-style-type: none; /* Remove as bolinhas */
 
@@ -1049,7 +1072,7 @@ footer,ul {
 
 }
 
-footer, li{
+footer li{
 
     color: rgba(249, 243, 236, 0.55);
 
