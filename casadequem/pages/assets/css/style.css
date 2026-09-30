@@ -310,7 +310,10 @@ main section {
 }
 
 
-#listaUnidades {
+#listaUnidades
+
+
+ {
     display: grid;
 
     grid-template-columns:
@@ -320,7 +323,10 @@ main section {
 }
 
 
-.card-unidade {
+.card-unidade 
+
+
+ {
     border: 1px solid var(--borda);
 
     border-radius: 12px;
@@ -331,19 +337,22 @@ main section {
 }
 
 
-.card-unidade h3 {
+.card-unidade h3
+ {
     font-family: "Playfair Display", serif;
 
     margin: 8px 0;
 }
 
 
-.card-unidade p {
+.card-unidade p 
+{
     margin-bottom: 6px;
 }
 
 
-.card-unidade button {
+.card-unidade button
+ {
     margin-top: 10px;
 
     background-color: var(--vinho-escuro);
@@ -1040,8 +1049,6 @@ footer,ul {
 
 }
 
-
-
 footer, li{
 
     color: rgba(249, 243, 236, 0.55);
@@ -1054,6 +1061,8 @@ footer, li{
     color: rgba(249, 243, 236, 0.55);
     text-align: right
 }
+
+
 
 
 /* CELULAR */
@@ -1085,9 +1094,5 @@ footer, li{
     .inicio {
         padding: 100px 30px;
     }
-
-
-
-   
-
+  
 }
